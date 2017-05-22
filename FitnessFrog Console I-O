@@ -1,0 +1,63 @@
+using System;
+
+namespace FitnessFrog
+{
+    class Program
+    {
+        static void Main()
+        {
+            var runningTotal = 0.0;
+          
+            while(true)
+            {
+                // Print to console, requesting input from user.
+                Console.Write("Enter how many minutes you exercised or type \"quit\" to exit: ");
+                var entry = Console.ReadLine();    // assign user input to variable "entry"     
+
+                if(entry.ToLower() == "quit") // make user input into lower case for comparison operation
+                {
+                    break; // break out of while loop.
+                }
+                try
+                {
+                  var minutes = double.Parse(entry); // convert string literal input to double
+                  if(minutes <= 0) 
+                  {
+                      Console.WriteLine(minutes + " is not an acceptable value."); 
+                      continue; // break out of if statement and start again.
+                  }
+                  else if(minutes <= 10)
+                  {
+                      Console.WriteLine("Better than nothing, am I right?");
+                  }
+                  else if(minutes <= 30)
+                  {
+                      Console.WriteLine("Way to go hot stuff!");
+                  }
+                  else if(minutes <= 60)
+                  {
+                      Console.WriteLine("You must be a ninja warrior in training!");
+                  }
+                  else
+                  {        
+                      Console.WriteLine("Okay, now you're just showing off!");
+                  }
+                  runningTotal += minutes; // running total is = to itself, + minutes entered.
+                  }
+                
+                catch(FormatException) // handle exception
+                {
+                  Console.WriteLine("that is not a valid input"); // catch exception when user enters unknown parameters.
+                  continue; // break out of if statement, begin again. Avoid's unhandled and fatal exception.
+                }
+
+                    // Print variable runningTotal to console
+                    Console.WriteLine("You've entered " + runningTotal + " minutes.");
+                
+                // Repeat loop until keyword "quit" is entered by user.
+            }
+
+            Console.WriteLine("Goodbye");
+        }
+    }
+}
