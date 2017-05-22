@@ -1,0 +1,39 @@
+using System; // include .NET system framework.
+
+namespace Treehouse.CodeChallenges // declare namespace. 
+{
+    class Program // declare class 
+    {
+        static void Main() // main method returning a null value.
+        {
+            Console.Write("Enter the number of times to print \"Yay!\": "); // print to user
+          
+            try
+              {
+                var userInput = Console.ReadLine(); // record input
+                var userCount = int.Parse(userInput); // convert string input to type int
+                var i = 0; // create empty variable
+                
+                if (userCount < 0) 
+                {
+                  Console.WriteLine("You must enter a positive number."); 
+                }
+                else if (userCount > 0)
+                {
+                  while (i < userCount) // whilst i is les than the user count, loop
+                    {
+
+                      Console.WriteLine("Yay!");
+                      i += 1; // increase counter by 1 each loop cycle to stop inf loop.
+                                      
+                    }
+                }
+              }
+              catch (FormatException)
+              {
+               Console.WriteLine("You must enter a whole number.");
+              
+              }
+        }
+    }
+}
